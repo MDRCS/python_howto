@@ -39,4 +39,34 @@ if __name__ == "__main__":
     for i in range(3):
         print(f"{tasks_ids[i]:{left}} {tasks_names[i]:{center}} {tasks_urgency[i]:{right}}")
 
+    # Numbers Formatting 
+
+    """
+        Large Integers (billion, Million)
+        Floatting points (PI, PHI etc)
+        Percentages (30%)
+    """
+
+    large_prime_number = 1000000007
+
+    print(f"Use Commas as a Separator: {large_prime_number:,d}")
+
+    ascii_number = 255
+
+    print(f"Display Numbers in Hexadecimal base: {ascii_number:x}")
+    print(f"Display Numbers in Hexadecimal base: {ascii_number:X}") # For Uppecase Hexadecimal Symbols
+
+    PI = 3.14159265359
+
+    print(f"Display Floatting number: {PI:.2f}") # two digits after comma
+    print(f"Display Floatting number: {PI:.4f}") # four digits after comma
+
+    scientific_number = 0.00000000412733
     
+    print(f"Display Scientific number : {scientific_number:e}")
+    print(f"Display Scientific number : {scientific_number:.1e}") # rounding decimals to two
+
+    percentage_number = 0.179323
+
+    print(f"Display a Percentage: {percentage_number:%}") # basicaly it multiply the number by 100 to turn it into a percentage
+    print(f"Display a Percentage: {percentage_number:.2%}")
