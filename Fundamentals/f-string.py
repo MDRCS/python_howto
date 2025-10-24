@@ -70,3 +70,9 @@ if __name__ == "__main__":
 
     print(f"Display a Percentage: {percentage_number:%}") # basicaly it multiply the number by 100 to turn it into a percentage
     print(f"Display a Percentage: {percentage_number:.2%}")
+
+    #. Challenge
+
+    data = {"name": "Vacuum", "price": 130.675}
+
+    print(f"{data['name']}: {{{data['price']:.2f}}}")
