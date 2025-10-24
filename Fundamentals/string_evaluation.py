@@ -52,3 +52,21 @@ if __name__ == "__main__":
     numbers_tuple_int = tuple(int(elem) for elem in numbers_tuple)
 
     print(numbers_tuple_int, type(numbers_tuple_int[0])) # (1, 2, 3) <class 'int'>
+
+    # Challenge
+    loop = True
+    while(loop):
+        temperature_str = input("Enter Day's temperature: ")
+        try:
+            temperature = float(temperature_str)
+        except ValueError:
+            print(f"please enter numerical value for Temperature.")
+            loop = False
+        else:
+            message = f"you entered {temperature:.1f} degrees"
+            if temperature < 10:
+                print(f"{message}, it's cold.")
+            elif temperature <= 25:
+                print(f"{message}, it's cool.")
+            elif temperature > 25:
+                print(f"{message}, it's hot.")
