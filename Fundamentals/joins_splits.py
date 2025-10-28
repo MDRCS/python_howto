@@ -1,12 +1,11 @@
 from pprint import pprint
-import re
 
 if __name__ == "__main__":
+
     # intial input
     fruit0 = "banana"
     fruit1 = "apple"
     fruit2 = "cherry"
-
 
     # desired output
     liked_fruits = "banana, apple, cherry"
@@ -40,37 +39,3 @@ if __name__ == "__main__":
         processed_tasks.append(processed_task)
     
     pprint(processed_tasks)
-
-    # Two separators strings
-
-    # Solution 1
-    messy_data = "banana, apple_juice, grapes_smoothy"
-    items_list = []
-
-    for item in messy_data.split(","):
-        if item.find("_"):
-            items_list.extend(item.split("_"))
-        else:
-            items_list.append(item)
-
-    print(items_list)
-
-    # Solution 2
-    items_list = []
-    messy_data = messy_data.replace("_", ",")
-
-    for item in messy_data.split(","):
-        items_list.append(item.strip())
-    
-    print(items_list)
-
-    # Solution 3
-    
-    items_list = re.findall("\w+", messy_data)
-    print(items_list)
-
-
-
-
-
-
