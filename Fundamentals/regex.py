@@ -66,10 +66,50 @@ if __name__ == "__main__":
         print(f"{pattern: <9} --> {re.findall(pattern, test_string)}")
 
     # Logical Operators
-    
+
     result = re.findall(r'a|b', "a c d d b ab") 
     print(result) # ['a', 'b', 'a', 'b']
+
     result = re.findall(r'(abc)', "abc abcd abdfc") 
     print(result) # ['abc', 'abc']
+
     result = re.findall(r'[^a]', "aaaaaaalb") 
     print(result) # ['l', 'b']
+
+    # Match Versus Search
+
+    search  = re.search(r"(\w\d)+", "4g384jdsh2u")
+    match  = re.match(r"(\w\d)+", "4g384jdsh2u") # checks only in the beginning of the string if doesn t find something return None
+    # match = re.findall(r"(\w\d)+", "4g323jdsh2u")
+    print(search, match.groups if match else 'We got None')
+
+    # working with groups
+    results = re.match(r"(\w+), (\w+)", "Homework, urgent; today") # as described in the pattern we have two groups (and third is the combination between the 3) to search for matches 
+    print(results.groups(), results.group(0), results.group(1), results.group(2))
+    print(results.span(0), results.span(1), results.span(2)) # same goes here
+
+    # Others
+
+    result = re.sub(r"\D", "-", "123,456&78*9") # Substitute : replace what matches the pattern with "-"
+    print(result)
+    
+    # Challenge 
+
+    text =  "abc_,abc__,abc,,__abc_,_abc"
+    results = re.findall(r"(abc)+", text)
+    print(results)
+
+    text_data = """101, Homework; Complete physics and math some random nonsense
+        102, Laundry; Wash all the clothes today
+        54, random; record
+        103, Museum; All about Egypt
+        1234, random; record
+        Another random record"""
+
+    regex = re.compile(r"(\d{3}), (\w+); (.+)") # (.+) anything beside a newline
+    tasks = []
+    for elem in text_data.split("\n"):
+        tasks.append(regex.findall(elem))
+
+    print(tasks)
+    
