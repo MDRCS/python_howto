@@ -128,4 +128,3 @@ if __name__ == "__main__":
             tasks.append((match.group("task_id"), match.group("task_name"), match.group("task_desc")))
     
     print(tasks)
-    breakpoint()
