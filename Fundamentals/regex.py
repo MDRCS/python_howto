@@ -108,8 +108,24 @@ if __name__ == "__main__":
 
     regex = re.compile(r"(\d{3}), (\w+); (.+)") # (.+) anything beside a newline
     tasks = []
+    tasks_second = []
     for elem in text_data.split("\n"):
-        tasks.append(regex.findall(elem))
+        tasks.extend(regex.findall(elem))
 
+    assert tasks == regex.findall(text_data)
     print(tasks)
+
+    # Label Our Extracted Groups rather than accessing by number (reducing error risk)
+    # NB: Better to use Labels as show below rather than using indexes (e.g match.group(1))
+
+    regex = re.compile(r"(?P<task_id>\d{3}), (?P<task_name>\w+); (?P<task_desc>.+)")
+    tasks = []
+
+    for elem in text_data.split("\n"):
+        match = regex.match(elem)
+        if match:
+            print(match.groupdict()) # we can print the extracted group as a dict with labels we added above 
+            tasks.append((match.group("task_id"), match.group("task_name"), match.group("task_desc")))
     
+    print(tasks)
+    breakpoint()
